@@ -10,10 +10,10 @@ export const startLoginEmailPassword = (email, password) => {
                 .auth()
                 .signInWithEmailAndPassword(email, password);
             dispatch(login(user.uid, user.displayName));
-            dispatch(finishLoading())
+            dispatch(finishLoading());
         } catch (error) {
             console.log(error);
-            dispatch(finishLoading())
+            dispatch(finishLoading());
         }
     };
 };
@@ -46,4 +46,19 @@ export const startGoogleLogin = () => {
 export const login = (uid, displayName) => ({
     type: types.login,
     payload: { uid, displayName },
+});
+
+export const startLogout = () => {
+    return async (dispatch) => {
+        try {
+            await firebase.auth().signOut();
+            dispatch(logout())
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+export const logout = () => ({
+    type: types.logout
 });
