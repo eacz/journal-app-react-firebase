@@ -14,11 +14,17 @@ export const startNewNote = () => {
         };
         const doc = await db.collection(`${uid}/journal/notes`).add(newNote);
         dispatch(setActiveNote(doc.id, newNote));
+        dispatch(addNewNote(doc.id, newNote));
     };
 };
 
 export const setActiveNote = (id, note) => ({
     type: types.notesActive,
+    payload: { id, ...note },
+});
+
+export const addNewNote = (id, note) => ({
+    type: types.notesAddNew,
     payload: { id, ...note },
 });
 
@@ -91,7 +97,7 @@ export const startDelete = (id) => {
         const uid = getState().auth.uid;
         try {
             await db.doc(`${uid}/journal/notes/${id}`).delete();
-            dispatch(deleteNote(id))
+            dispatch(deleteNote(id));
         } catch (error) {
             console.log(error);
         }
@@ -104,3 +110,7 @@ export const deleteNote = (id) => {
         payload: id,
     };
 };
+
+export const notesLogout = () => ({
+    type: types.notesLogoutCleaning,
+});

@@ -7,11 +7,13 @@ const JournalEntry = ({ id, title, body, date, url }) => {
     const noteDate = moment(date);
     const dispatch = useDispatch();
 
-    const handleSetActive  = () => {
-        dispatch(setActiveNote(id, {title,body,date,url}))
-    }
+    const handleSetActive = () => {
+        dispatch(setActiveNote(id, { title, body, date, url }));
+    };
     return (
-        <div onClick={handleSetActive} className="journal__entry pointer">
+        <div
+            onClick={handleSetActive}
+            className="journal__entry pointer animate__animated animate__backInLeft">
             {url && (
                 <div
                     className="journal__entry-picture"
