@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import authReducer from '../reducers/authReducer';
 import thunk from 'redux-thunk';
 import UIReducer from '../reducers/UIReducer';
+import notesReducer from '../reducers/notesReducer';
 
 const composeEnhancers =
     (typeof window !== 'undefined' &&
@@ -10,7 +11,8 @@ const composeEnhancers =
 
 const reducers = combineReducers({
     auth: authReducer,
-    ui: UIReducer
+    ui: UIReducer,
+    notes: notesReducer
 });
 
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
