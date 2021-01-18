@@ -8,7 +8,6 @@ const JournalEntry = ({ id, title, body, date, url }) => {
     const dispatch = useDispatch();
 
     const handleSetActive  = () => {
-        console.log(title, body);
         dispatch(setActiveNote(id, {title,body,date,url}))
     }
     return (
