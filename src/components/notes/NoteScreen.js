@@ -25,6 +25,10 @@ const NoteScreen = () => {
         dispatch(setActiveNote(formValues.id, { ...formValues }));
     }, [formValues, dispatch]);
 
+    const handleDelete = () => {
+        
+    }
+    
     return (
         <div className="notes__main-content">
             <NotesAppBar />
@@ -47,6 +51,7 @@ const NoteScreen = () => {
                     {note.url && <img src={note.url} alt="img" />}
                 </div>
             </div>
+            <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
         </div>
     );
 };

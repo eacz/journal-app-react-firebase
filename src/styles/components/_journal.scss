@@ -47,6 +47,8 @@
     border-radius: 4px;
     color: $dark-grey;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
     overflow: hidden;
 }
