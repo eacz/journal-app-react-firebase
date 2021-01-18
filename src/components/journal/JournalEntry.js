@@ -1,11 +1,18 @@
 import React from 'react';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { setActiveNote } from '../../actions/notes';
 
 const JournalEntry = ({ id, title, body, date, url }) => {
     const noteDate = moment(date);
-    console.log(noteDate);
+    const dispatch = useDispatch();
+
+    const handleSetActive  = () => {
+        console.log(title, body);
+        dispatch(setActiveNote(id, {title,body,date,url}))
+    }
     return (
-        <div className="journal__entry pointer">
+        <div onClick={handleSetActive} className="journal__entry pointer">
             {url && (
                 <div
                     className="journal__entry-picture"
