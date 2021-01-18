@@ -7,7 +7,8 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../actions/auth';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import {startLoadingNotes } from '../../actions/notes';
+import { startLoadingNotes } from '../../actions/notes';
+import LoadingScreen from '../LoadingScreen';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -28,8 +29,7 @@ const AppRouter = () => {
     }, [dispatch, setChecking, setIsLoggedIn]);
 
     if (checking) {
-        //TODO: A good looking loading component
-        return <div>Loading...</div>;
+        return <LoadingScreen />;
     }
 
     return (
